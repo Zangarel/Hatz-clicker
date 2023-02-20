@@ -8,6 +8,12 @@ EditorBuildSettings:
   - enabled: 0
     path: 
     guid: 00000000000000000000000000000000
+  - enabled: 1
+    path: Assets/Scenes/SplashAnimation.unity
+    guid: 4b28e1cbe0fb3954f85f372b1104deea
+  - enabled: 1
+    path: Assets/Scenes/MainGameScene.unity
+    guid: ce0feaec1d33c29459ab7e8105a2293c
   m_configObjects:
     com.unity.adaptiveperformance.loader_settings: {fileID: 11400000, guid: eac8ad4211987c740828d160edcb4741, type: 2}
     com.unity.adaptiveperformance.samsung.android.provider_settings: {fileID: 11400000, guid: 5e43c36e1efddb146b37feb0acecd7d6, type: 2}
