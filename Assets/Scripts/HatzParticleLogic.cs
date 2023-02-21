@@ -11,19 +11,25 @@ public class HatzParticleLogic : MonoBehaviour
     public Text hatzText;
     void Start()
     {
-        Destroy(gameObject, 1.69f);
+        /* Distruce textul particula dupa o secunda
+         */
+        Destroy(gameObject, 1f);
     }
 
     // Update is called once per frame
     void Update()
     {
-        hatzText.transform.Translate(Vector2.down);
+        /* Misca particula in jos dupa ce apare
+         */
+        hatzText.transform.Translate(Vector2.down * Time.deltaTime * 360);
     }
 
     public void setHatzCount(double hatz)
     {
+        /* Initializeaza particula text dupa apasarea clickerului
+         */
         hatzCount = hatz;
         hatzText.text = "+ " + hatzCount.ToString();
-        hatzText.transform.position = UnityEngine.Input.mousePosition;
+        hatzText.transform.position = UnityEngine.Input.mousePosition + Vector3.right * 150;
     }
 }

@@ -11,6 +11,8 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
+        /* Incarca scena de start si pastreaza scena in care se incarca GameManager
+         */
         LoadScene(currentActiveScene);
         DontDestroyOnLoad(gameObject);
         timer = 0;
@@ -21,14 +23,8 @@ public class GameManager : MonoBehaviour
     {
         switch (currentActiveScene)
         {
-            case "StartUpScene":
-                if (timer >= 1.0f)
-                {
-                    timer = 0;
-                    currentActiveScene = "SplashAnimation";
-                    LoadScene(currentActiveScene);
-                }
-                break;
+            /* Schimba scena dupa ce se termina animatia din scena SplashAnimation
+             */
             case "SplashAnimation":
                 if (timer >= 3.0f)
                 {
@@ -45,6 +41,8 @@ public class GameManager : MonoBehaviour
 
     public void LoadScene(string sceneName)
     {
+        /* Incarca o scena anume
+         */
         SceneManager.LoadScene(sceneName);
     }
 }
