@@ -7,16 +7,11 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     public static float timer;
-    public static readonly int GameSceneIndex = 1;
-    public static readonly int SplashSceneIndex = 0;
-    public int CurrentSceneIndex = 0;
+    public string currentActiveScene = "SplashAnimation";
 
-    void Awake()
-    {
-        
-    }
     void Start()
     {
+        LoadScene(currentActiveScene);
         DontDestroyOnLoad(gameObject);
         timer = 0;
     }
@@ -24,20 +19,32 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(CurrentSceneIndex == SplashSceneIndex) {
-            if (timer >= 3)
-            {
-                LoadScene(GameSceneIndex);
-                CurrentSceneIndex = GameSceneIndex;
-                timer = 0;
-            }
-            else
-                timer += Time.deltaTime;
+        switch (currentActiveScene)
+        {
+            case "StartUpScene":
+                if (timer >= 1.0f)
+                {
+                    timer = 0;
+                    currentActiveScene = "SplashAnimation";
+                    LoadScene(currentActiveScene);
+                }
+                break;
+            case "SplashAnimation":
+                if (timer >= 3.0f)
+                {
+                    timer = 0;
+                    currentActiveScene = "MainGameScene";
+                    LoadScene(currentActiveScene);
+                }
+                break;
+            case "MainGameScene":
+                break;
         }
+        timer += Time.deltaTime;
     }
 
-    public void LoadScene(int sceneIndex)
+    public void LoadScene(string sceneName)
     {
-        SceneManager.LoadScene(sceneIndex);
+        SceneManager.LoadScene(sceneName);
     }
 }
