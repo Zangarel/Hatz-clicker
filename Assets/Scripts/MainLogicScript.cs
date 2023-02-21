@@ -34,7 +34,7 @@ public class MainLogicScript : MonoBehaviour
         // Functie care va fi apelata la apasarea butonului principal. Adauga hatzuri folosing subserviciul clicker logic
         double HatzToAdd = MainClickerLogicSubservice.GetHatzToAdd();
         HatzCount += HatzToAdd;
-        Instantiate(hatzClickParticle);
+        Instantiate(hatzClickParticle).GetComponent<HatzParticleLogic>().setHatzCount(MainClickerLogicSubservice.GetHatzOnClick());
     }
 
     public double GetHatzCount()

@@ -19,7 +19,7 @@ public class HatzCountLogic : MonoBehaviour
     void Update()
     {
         string textToSet = mainLogic.GetComponent<MainLogicScript>().GetHatzCount().ToString();
-        textToSet += "Hatzuri";
+        textToSet += " Hatzuri";
         hatzCount.text = textToSet;
     }
 }
