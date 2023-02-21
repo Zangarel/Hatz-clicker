@@ -10,12 +10,15 @@ public class MainLogicScript : MonoBehaviour
     public double HatzCount;
     public MainClickerLogic MainClickerLogicSubservice;
     public GameObject hatzClickParticle;
+    public MainBuildingsLogic MainBuildingsLogicSubservice;
+    private float timer;
 
     private void InitializeMainLogicScript()
     {
         // Functie pentru initializarea MainLogicScript. Apeleaza initializarea subserviciului si ar trebui apelata doar o data
         MainClickerLogicSubservice.InitializeClickerLogic();
         HatzCount = 0;
+        timer = 0f;
     }
     void Start()
     {
@@ -26,6 +29,12 @@ public class MainLogicScript : MonoBehaviour
     void Update()
     {
         // Update este apelata in fiecare frame
+        timer += Time.deltaTime;
+        if(timer >= 1f)
+        {
+            timer = 0f;
+            HatzCount += MainBuildingsLogicSubservice.tickBuildings();
+        }
     }
 
     public void MainClickerButtonClicked()

@@ -8,8 +8,8 @@ public class MainClickerLogic : MonoBehaviour
     // HatzOnClick - Numarul de Hatzuri pe care le primesti pe apasarea butonului
     // TemporaryMultiplier - Multiplicatorul de Hatzuri (daca e 1 nu e multiplicare practic)
 
-    private double HatzOnClick;
-    private double TemporaryMultiplier;
+    public double HatzOnClick;
+    public double TemporaryMultiplier;
 
     public void InitializeClickerLogic()
     {
