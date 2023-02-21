@@ -5,13 +5,14 @@ using UnityEngine;
 
 public class SliderLogic : MonoBehaviour
 {
-    public bool sliding = false;
+    public bool Sliding = false;
     public bool MouseClicked = false;
     public bool IsUp = false;
     private const float TopPosition = 770;
     private const float BotPosition = -587;
-    public float pos = 0;
-    public int slidingSpeed = 4000;
+    public float Pos = 0;
+    public float PositionBefore = -1;
+    public int SlidingSpeed = 4000;
     // Start is called before the first frame update
     void Start()
     {
@@ -24,19 +25,23 @@ public class SliderLogic : MonoBehaviour
         /* Da slide la meniu cand tragi de capu meniului
          * 
          */
-        pos = gameObject.transform.position.y;
-        if(Input.GetMouseButtonDown(0))
+        Pos = gameObject.transform.position.y;
+        if (Pos > TopPosition)
+            gameObject.transform.position = new Vector2(gameObject.transform.position.x, TopPosition);
+        if (Pos < BotPosition)
+            gameObject.transform.position = new Vector2(gameObject.transform.position.x, BotPosition);
+        if (Input.GetMouseButtonUp(0))
             MouseClicked = true;    
-        if (pos == TopPosition || pos == BotPosition)
-            sliding = false;
-        if (sliding && MouseClicked)
+        if (Pos == TopPosition || Pos == BotPosition)
+            Sliding = false;
+        if (Sliding && MouseClicked)
         {
-            Vector2 finalVectorSpeed = Vector2.up * slidingSpeed * Time.deltaTime;
+            Vector2 finalVectorSpeed = Vector2.up * SlidingSpeed * Time.deltaTime;
             gameObject.transform.Translate(IsUp ? finalVectorSpeed : finalVectorSpeed * -1);
-            if (pos >= TopPosition || pos <= BotPosition)
+            if (Pos >= TopPosition || Pos <= BotPosition)
             {
                 gameObject.transform.position = new Vector2(gameObject.transform.position.x, IsUp ? TopPosition : BotPosition);
-                sliding = false;
+                Sliding = false;
                 MouseClicked = false;
                 IsUp = !IsUp;
             }
@@ -46,7 +51,7 @@ public class SliderLogic : MonoBehaviour
 
     public void OnSlide()
     {
-        sliding = true;
+        Sliding = true;
     }
 
     
