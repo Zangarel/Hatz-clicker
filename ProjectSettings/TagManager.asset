@@ -6,6 +6,7 @@ TagManager:
   tags:
   - MainLogicTag
   - MainBuildingsLogicTag
+  - MainClickerLogicTag
   layers:
   - Default
   - TransparentFX

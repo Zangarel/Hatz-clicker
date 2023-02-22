@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,7 +9,7 @@ public class MainClickerLogic : MonoBehaviour
     // HatzOnClick - Numarul de Hatzuri pe care le primesti pe apasarea butonului
     // TemporaryMultiplier - Multiplicatorul de Hatzuri (daca e 1 nu e multiplicare practic)
 
-    public double HatzOnClick;
+    public ulong HatzOnClick;
     public double TemporaryMultiplier;
 
     public void InitializeClickerLogic()
@@ -18,7 +19,7 @@ public class MainClickerLogic : MonoBehaviour
         HatzOnClick = 1;
         TemporaryMultiplier = 1;
     }
-    public double GetHatzOnClick()
+    public ulong GetHatzOnClick()
     {
         // Functie de tip Getter pentru returnarea valorii HatzOnClick
         return HatzOnClick;
@@ -29,7 +30,7 @@ public class MainClickerLogic : MonoBehaviour
         return TemporaryMultiplier;
     }
 
-    public void SetHatzOnClick(double HatzOnClickToSet)
+    public void SetHatzOnClick(ulong HatzOnClickToSet)
     {
         // Functie de tip Setter pentru HatzOnClick
         HatzOnClick = HatzOnClickToSet;
@@ -46,9 +47,9 @@ public class MainClickerLogic : MonoBehaviour
         // Functie pentru resetarea valorii TemporaryMultiplier
         TemporaryMultiplier = 1;
     }
-    public double GetHatzToAdd()
+    public ulong GetHatzToAdd()
     {
         //Functie pentru returnarea valorii EFECTIVE de hatzuri pe click (cu tot cu eventualele efecte temporare / speciale)
-        return HatzOnClick * TemporaryMultiplier;
+        return (ulong)(HatzOnClick * TemporaryMultiplier);
     }
 }

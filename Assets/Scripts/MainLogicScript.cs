@@ -8,7 +8,7 @@ public class MainLogicScript : MonoBehaviour
     // Clasa de tip Service pentru logica principala a jocului
     // HatzCount - Numarul de hatzuri stocate
     // MainClickerLogicSubservice - Model pentru un "SubService" de tip MainClickerLogic (explicat in fisierul aferent)
-    public double HatzCount;
+    public ulong HatzCount;
     public MainClickerLogic MainClickerLogicSubservice;
     public GameObject hatzClickParticle;
     public MainBuildingsLogic MainBuildingsLogicSubservice;
@@ -41,7 +41,7 @@ public class MainLogicScript : MonoBehaviour
     public void MainClickerButtonClicked()
     {
         // Functie care va fi apelata la apasarea butonului principal. Adauga hatzuri folosing subserviciul clicker logic
-        double HatzToAdd = MainClickerLogicSubservice.GetHatzToAdd();
+        ulong HatzToAdd = MainClickerLogicSubservice.GetHatzToAdd();
         HatzCount += HatzToAdd;
         Instantiate(hatzClickParticle).GetComponent<HatzParticleLogic>().setHatzCount(MainClickerLogicSubservice.GetHatzOnClick());
     }
@@ -51,7 +51,7 @@ public class MainLogicScript : MonoBehaviour
         return HatzCount;
     }
 
-    public void SetHatzCount(double count)
+    public void SetHatzCount(ulong count)
     {
         HatzCount = count;
     }

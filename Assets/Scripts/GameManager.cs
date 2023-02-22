@@ -12,17 +12,18 @@ public class GameManager : MonoBehaviour
     public string currentActiveScene = "SplashAnimation";
     public bool Loaded = false;
     public double difference;
-    public double HatzCount;
-    public double HatzToAdd;
+    public ulong HatzCount;
+    public ulong HatzToAdd;
+    public string loadedBuildingsMetaData;
 
     void Start()
     {
         /* Incarca scena de start si pastreaza scena in care se incarca GameManager
          */
-        LoadGame();
         LoadScene(currentActiveScene);
+        LoadGame();
         DontDestroyOnLoad(gameObject);
-        timer = 0;
+        timer = 0f;
     }
 
     // Update is called once per frame
@@ -35,7 +36,7 @@ public class GameManager : MonoBehaviour
             case "SplashAnimation":
                 if (timer >= 3.0f)
                 {
-                    timer = 0;
+                    timer = 0f;
                     currentActiveScene = "MainGameScene";
                     LoadScene(currentActiveScene);
                 }
@@ -43,9 +44,10 @@ public class GameManager : MonoBehaviour
             case "MainGameScene":
                 if (!Loaded)
                 {
-                    HatzCount = double.Parse(PlayerPrefs.GetString("HatzCount"));
+                    HatzCount = ulong.Parse(PlayerPrefs.GetString("HatzCount"));
+                    GameObject.FindWithTag("MainBuildingsLogicTag").GetComponent<MainBuildingsLogic>().loadSaveDataFromString(loadedBuildingsMetaData);
                     HatzToAdd = GameObject.FindWithTag("MainBuildingsLogicTag").GetComponent<MainBuildingsLogic>().tickBuildings();
-                    GameObject.FindWithTag("MainLogicTag").GetComponent<MainLogicScript>().SetHatzCount(HatzCount + HatzToAdd * difference);
+                    GameObject.FindWithTag("MainLogicTag").GetComponent<MainLogicScript>().SetHatzCount((ulong)(HatzCount + HatzToAdd * difference));
                     Loaded = true;
                 }
                 break;
@@ -72,7 +74,8 @@ public class GameManager : MonoBehaviour
         Debug.Log("SAVEGAME " + HatzCount);
         PlayerPrefs.SetString("HatzCount", HatzCount);
         PlayerPrefs.SetString("DateTime", now.ToBinary().ToString());
-        
+        PlayerPrefs.SetString("BuildingsSaveData", GameObject.FindWithTag("MainBuildingsLogicTag").GetComponent<MainBuildingsLogic>().getAllBuildingsMetaData());
+        Debug.Log(GameObject.FindWithTag("MainBuildingsLogicTag").GetComponent<MainBuildingsLogic>().getAllBuildingsMetaData());
         PlayerPrefs.Save();
     }
 
@@ -87,6 +90,14 @@ public class GameManager : MonoBehaviour
             TimeSpan difference = now.Subtract(old);
             this.difference = difference.TotalSeconds;
 
+        }
+        if (PlayerPrefs.HasKey("BuildingsSaveData"))
+        {
+            loadedBuildingsMetaData = PlayerPrefs.GetString("BuildingsSaveData");
+        }
+        else
+        {
+            loadedBuildingsMetaData = GameObject.FindWithTag("MainBuildingsLogicTag").GetComponent<MainBuildingsLogic>().getAllBuildingsMetaData();
         }
     }
 }

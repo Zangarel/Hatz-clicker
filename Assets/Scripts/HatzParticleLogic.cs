@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -7,7 +8,6 @@ using UnityEngine.UI;
 public class HatzParticleLogic : MonoBehaviour
 {
     // Start is called before the first frame update
-    public double hatzCount;
     public Text hatzText;
     void Start()
     {
@@ -21,15 +21,14 @@ public class HatzParticleLogic : MonoBehaviour
     {
         /* Misca particula in jos dupa ce apare
          */
-        hatzText.transform.Translate(Vector2.down * Time.deltaTime * 360);
+        hatzText.transform.Translate(360 * Time.deltaTime * Vector2.down);
     }
 
-    public void setHatzCount(double hatz)
+    public void setHatzCount(ulong hatz)
     {
         /* Initializeaza particula text dupa apasarea clickerului
          */
-        hatzCount = hatz;
-        hatzText.text = "+ " + hatzCount.ToString();
+        hatzText.text = "+ " + hatz.ToString();
         hatzText.transform.position = UnityEngine.Input.mousePosition + Vector3.right * 150;
     }
 }
