@@ -276,7 +276,7 @@ GameObject:
   - component: {fileID: 345134392}
   m_Layer: 0
   m_Name: MainLogic
-  m_TagString: Untagged
+  m_TagString: MainLogicTag
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -397,7 +397,7 @@ GameObject:
   - component: {fileID: 384086016}
   m_Layer: 0
   m_Name: MainBuildingsLogic
-  m_TagString: Untagged
+  m_TagString: MainBuildingsLogicTag
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -17,13 +18,13 @@ public class MainLogicScript : MonoBehaviour
     {
         // Functie pentru initializarea MainLogicScript. Apeleaza initializarea subserviciului si ar trebui apelata doar o data
         MainClickerLogicSubservice.InitializeClickerLogic();
-        HatzCount = 0;
         timer = 0f;
     }
     void Start()
     {
         // Start va fi apelata o singura data la incarcarea programului
         InitializeMainLogicScript();
+        
     }
 
     void Update()
@@ -48,5 +49,10 @@ public class MainLogicScript : MonoBehaviour
     public double GetHatzCount()
     {
         return HatzCount;
+    }
+
+    public void SetHatzCount(double count)
+    {
+        HatzCount = count;
     }
 }
