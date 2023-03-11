@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Numerics;
 using UnityEngine;
 
 public class MainLogicScript : MonoBehaviour
@@ -8,7 +9,7 @@ public class MainLogicScript : MonoBehaviour
     // Clasa de tip Service pentru logica principala a jocului
     // HatzCount - Numarul de hatzuri stocate
     // MainClickerLogicSubservice - Model pentru un "SubService" de tip MainClickerLogic (explicat in fisierul aferent)
-    public ulong HatzCount;
+    public BigInteger HatzCount;
     public MainClickerLogic MainClickerLogicSubservice;
     public GameObject hatzClickParticle;
     public MainBuildingsLogic MainBuildingsLogicSubservice;
@@ -46,7 +47,7 @@ public class MainLogicScript : MonoBehaviour
         Instantiate(hatzClickParticle).GetComponent<HatzParticleLogic>().setHatzCount(MainClickerLogicSubservice.GetHatzOnClick());
     }
 
-    public double GetHatzCount()
+    public BigInteger GetHatzCount()
     {
         return HatzCount;
     }
