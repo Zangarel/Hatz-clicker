@@ -293,7 +293,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b46e119cbefbdf541a5285ca251ec189, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HatzCount: 0
   MainClickerLogicSubservice: {fileID: 1401227953}
   hatzClickParticle: {fileID: 9214755737792774321, guid: 2231124587cbbab4284e7e10d300ee39, type: 3}
   MainBuildingsLogicSubservice: {fileID: 384086016}
@@ -921,7 +920,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: New Text
+  m_Text: HatzCount
 --- !u!222 &1137601163
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -942,8 +941,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c9571039faa46a49b514efcbdbf9c06, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mainLogic: {fileID: 345134391}
-  hatzCount: {fileID: 1137601162}
+  MainLogic: {fileID: 345134391}
+  HatzCountString: {fileID: 1137601162}
 --- !u!1 &1278591437
 GameObject:
   m_ObjectHideFlags: 0
